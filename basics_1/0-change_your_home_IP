@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# Script qui configure /etc/hosts pour que localhost -> 127.0.0.2 et facebook.com -> 8.8.8.8
+
+set -e
+
+# Sauvegarde de /etc/hosts
+sudo cp /etc/hosts /etc/hosts.bak_0-change_your_home_IP
+
+# Supprime toute ligne contenant 'localhost' ou 'facebook.com'
+sudo sed -i '/localhost/d' /etc/hosts
+sudo sed -i '/facebook.com/d' /etc/hosts
+
+# Ajoute les nouvelles résolutions demandées
+echo -e "127.0.0.2\tlocalhost" | sudo tee -a /etc/hosts > /dev/null
+echo -e "8.8.8.8\tfacebook.com" | sudo tee -a /etc/hosts > /dev/null

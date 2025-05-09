@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Script qui affiche toutes les adresses IPv4 actives de la machine
+
+hostname -I | tr ' ' '\n' | grep -E '^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$'
